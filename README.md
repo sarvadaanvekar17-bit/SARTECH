@@ -64,7 +64,3 @@ SARTECH/
 **Sarvada Anvekar**
 
 Computer Science Engineering Graduate | Aspiring Full Stack Developer
-
-## 📄 License
-
-This project is intended for learning and portfolio demonstration. Add an open-source license if you plan to distribute it under specific terms.
