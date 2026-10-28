@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b12">
+  <title>SARTECH — Personal Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+</head>
+<body>
+  <div class="app">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#">
+      <span class="brand-mark">S</span>
+      <span>SARTECH<small>PERSONAL MONITOR</small></span>
+    </a>
+
+    <p class="nav-label">WORKSPACE</p>
+    <button class="nav-item active" data-view="overview">◈ <span>Overview</span></button>
+    <button class="nav-item" data-view="tasks">☷ <span>My tasks</span><span class="nav-count" id="nav-count">0</span></button>
+    <button class="nav-item" data-view="focus">◷ <span>Focus room</span></button>
+
+    <p class="nav-label">PERSONAL</p>
+    <button class="nav-item" data-view="insights">⌁ <span>Insights</span></button>
+
+    <div class="sidebar-bottom">
+      <div class="mini-profile">
+        <div class="avatar">Y</div>
+        <div><strong>Your workspace</strong><small>Personal edition</small></div>
+      </div>
+      <button class="theme-button" id="theme-toggle">☼ <span>Switch appearance</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobile-menu" aria-label="Toggle navigation">☰</button>
+      <div class="breadcrumb">Workspace <span>/</span> <strong id="page-name">Overview</strong></div>
+      <div class="top-actions">
+        <span class="live-dot"></span><span class="live-label">YOUR SPACE</span>
+        <div class="avatar">Y</div>
+      </div>
+    </header>
+    <section class="page">
+      <div class="welcome">
+        <div>
+          <p class="eyebrow" id="today-label">YOUR DAILY SPACE</p>
+          <h1 id="greeting">Make today <span>count.</span></h1>
+          <p class="muted">A little progress every day adds up to remarkable things.</p>
+        </div>
+        <button class="primary-button" id="quick-add">＋ New task</button>
+      </div>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-top"><span>Tasks completed</span><span class="stat-icon purple">✓</span></div>
+          <div class="stat-value" id="completed-stat">0</div>
+          <p class="stat-foot">Across your workspace</p>
+          <div class="mini-track"><div id="completed-bar" class="mini-fill purple-fill"></div></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Still in progress</span><span class="stat-icon blue">↗</span></div>
+          <div class="stat-value" id="pending-stat">0</div>
+          <p class="stat-foot">Tasks waiting for you</p>
+          <div class="mini-track"><div id="pending-bar" class="mini-fill blue-fill"></div></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Focus minutes</span><span class="stat-icon amber">◷</span></div>
+          <div class="stat-value" id="focus-stat">0<span class="unit"> min</span></div>
+          <p class="stat-foot">Time spent in focus sessions</p>
+          <div class="mini-track"><div id="focus-bar" class="mini-fill amber-fill"></div></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Completion rate</span><span class="stat-icon green">↗</span></div>
+          <div class="stat-value" id="rate-stat">0%</div>
+          <p class="stat-foot">Your overall task progress</p>
+          <div class="mini-track"><div id="rate-bar" class="mini-fill green-fill"></div></div>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel tasks-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">EXECUTION</p><h2 id="task-heading">Your priorities</h2></div>
+            <button class="text-button" data-go="tasks">View all ↗</button>
+          </div>
+          <div class="task-toolbar">
+            <input id="search-input" type="search" placeholder="⌕  Search your tasks..." aria-label="Search tasks">
+            <select id="filter-select" aria-label="Filter tasks">
+              <option value="all">All tasks</option>
+              <option value="active">Pending</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          
+          <form id="task-form" class="task-form">
+            <input
+              id="task-input"
+              type="text"
+              maxlength="120"
+              placeholder="What do you want to accomplish?"
+              required
+            >
+
+            <select id="task-priority" aria-label="Task priority">
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+              <option value="Low">Low</option>
+            </select>
+
+            <button type="submit" class="primary-button">
+              Add task
+            </button>
+          </form>
+
+          <div id="task-list" class="task-list"></div>
+        </article>
+
+        <article class="panel focus-panel" id="focus">
+          <p class="eyebrow">DEEP WORK</p>
+          <h2>Focus room</h2>
+          <p class="muted">Make time for what matters.</p>
+
+          <div class="timer-ring" id="timer-ring">
+            <div class="timer-inner">
+              <div id="timer-display" class="timer-display">25:00</div>
+              <p id="timer-label" class="timer-label">Deep work</p>
+            </div>
+          </div>
+
+          <div class="timer-controls">
+            <button id="start-timer" class="primary-button" type="button">
+              ▶ Start focus
+            </button>
+            <button id="reset-timer" class="secondary-btn" type="button">
+              Reset
+            </button>
+          </div>
+
+          <p id="session-note" class="session-note">Ready when you are.</p>
+        </article>
+      </section>
+
+      <section id="insights" class="panel">
+        <p class="eyebrow">YOUR PROGRESS</p>
+        <h2>Productivity insights</h2>
+
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+
+        <div class="progress-caption">
+          <span id="progress-text">0 of 0 tasks completed</span>
+          <span id="progress-percent">0%</span>
+        </div>
+      </section>
+
+      <footer class="bottom-note">
+        NEXORA · Small steps. Remarkable progress.
+      </footer>
+    </section>
+  </main>
+  </div>
+</body>
+</html>
