@@ -30,13 +30,12 @@ SARTECH is a personal productivity web application built using HTML, CSS, and Ja
 3. Open `index.html` in your browser, or use the Live Server extension.
 
 ## 📁 Project Structure
-
-```text
 SARTECH/
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
+
 
 ## 🎯 Key Learning Outcomes
 
