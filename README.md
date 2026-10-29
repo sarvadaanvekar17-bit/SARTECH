@@ -2,7 +2,7 @@
 
 **A productivity dashboard designed to help you organize tasks, track daily progress, and stay focused.**
 
-SARTECH is a personal productivity web application built using HTML, CSS, and vanilla JavaScript. It brings essential productivity tools together in one clean, modern dashboard, helping users manage tasks, monitor their progress, and maintain focus throughout the day.
+SARTECH is a personal productivity web application built using HTML, CSS, and JavaScript. It brings essential productivity tools together in one clean, modern dashboard, helping users manage tasks, monitor their progress, and maintain focus throughout the day.
 
 ## ✨ Features
 
@@ -20,7 +20,7 @@ SARTECH is a personal productivity web application built using HTML, CSS, and va
 
 - HTML5
 - CSS3
-- Vanilla JavaScript
+- JavaScript
 - Browser Local Storage
 
 ## 🚀 Getting Started
@@ -37,9 +37,6 @@ SARTECH/
 ├── style.css
 ├── script.js
 └── README.md
-```
-
-*Adjust the filenames if your project uses different names.*
 
 ## 🎯 Key Learning Outcomes
 
